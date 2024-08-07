@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terrain de Foot avec Joueurs</title>
     <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="terrain" id="terrain"></div>
-    <div class="editeur-joueur">
-        <label for="nom-joueur">Nom du joueur sélectionné:</label>
-        <input type="text" id="nom-joueur" oninput="mettreAJourNomJoueur()">
+    <center>
+        <div class="wrapper">
+            <div class="campo">
+                <div class="semi1"></div>
+                <div class="semi2"></div>
+                <div class="divisoria"></div>
+                <div class="interior"></div>
+                <div class="penalty"></div>           
+                <div class="gk"></div>
+                <div class="cb"></div>
+                <div class="lb"></div>
+                <div class="rb"></div>
+                <div class="lwb"></div>
+                <div class="dm"></div>
+                <div class="rwb"></div>
+                <div class="lm"></div>
+                <div class="cm"></div>
+                <div class="rm"></div>
+                <div class="amr"></div>
+                <div class="am"></div>
+                <div class="aml"></div>
+                <div class="wl"></div>
+                <div class="cf"></div>
+                <div class="wr"></div>
+                <div class="st"></div>
+            </div>
+        </div>
+    </center>
+
+    <div id="player-names">
+    </div>
+    <div class="editPlayerName">
+        <label for="namePlayer">Selected Player Name:</label>
+        <input type="text" id="namePlayer" oninput="editNamePlayer()">
     </div>
 
     <script src="js/script.js"></script>

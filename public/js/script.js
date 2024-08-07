@@ -1,67 +1,61 @@
-const positions = [
-    { top: "10%", left: "5%" },
-    { top: "10%", left: "15%" },
-    { top: "10%", left: "25%" },
-    { top: "10%", left: "35%" },
-    { top: "10%", left: "45%" },
-    { top: "10%", left: "55%" },
-    { top: "10%", left: "65%" },
-    { top: "10%", left: "75%" },
-    { top: "10%", left: "85%" },
-    { top: "30%", left: "15%" },
-    { top: "30%", left: "5%" }
-];
-
-let joueurs = [];
-let joueurSelectionneIndex = null;
-
-function chargerJoueurs() {
-    fetch('joueurs.json')
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('players.json')
         .then(response => response.json())
-        .then(data => {
-            console.log("Joueurs chargés :", data); // Ajout de log
-            joueurs = data;
-            afficherJoueurs(joueurs);
-        })
-        .catch(error => console.error("Erreur de chargement des joueurs :", error)); // Ajout de log en cas d'erreur
-}
+        .then(data => updateField(data))
+        .catch(error => console.error('Error loading JSON data:', error));
+});
 
-function afficherJoueurs(joueurs) {
-    const terrain = document.getElementById('terrain');
-    if (!terrain) {
-        console.error("Élément terrain non trouvé !");
-        return;
-    }
+let selectedPlayerIndex = null;
 
-    joueurs.forEach((joueur, index) => {
-        // Afficher les joueurs sur le terrain
-        const joueurDiv = document.createElement('div');
-        joueurDiv.className = 'joueur';
-        joueurDiv.style.top = positions[index].top;
-        joueurDiv.style.left = positions[index].left;
-        joueurDiv.innerHTML = `
-            <img src="${joueur.photo}" id="photo-${index}" alt="${joueur.name}">
-        `;
-        joueurDiv.addEventListener('click', () => editerJoueur(index));
-        terrain.appendChild(joueurDiv);
+function updateField(players) {
+    players.forEach((player, index) => {
+        const div = document.querySelector(`.${player.position}`);
+        if (div) {
+            const img = createImageElement(player.photo, player.name, index);
+            const span = createSpanElement(player.name, index);
+
+            div.appendChild(img);
+            div.appendChild(span);
+        }
     });
 }
 
-function editerJoueur(index) {
-    joueurSelectionneIndex = index;
-    const inputElement = document.getElementById('nom-joueur');
-    inputElement.value = joueurs[index].name;
+function createImageElement(src, alt, index) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    img.width = 50; 
+    img.id = `photo-${index}`;
+    img.addEventListener('click', () => selectPlayer(index, alt));
+    return img;
+}
+
+function createSpanElement(text, index) {
+    const span = document.createElement('span');
+    span.textContent = text;
+    span.id = `name-${index}`;
+    span.classList.add('player-name');
+    span.dataset.index = index;
+    return span;
+}
+
+function selectPlayer(index, name) {
+    selectedPlayerIndex = index;
+    const inputElement = document.getElementById('namePlayer');
+    inputElement.value = name;
     inputElement.focus();
 }
 
-function mettreAJourNomJoueur() {
-    if (joueurSelectionneIndex !== null) {
-        const newName = document.getElementById('nom-joueur').value;
+function editNamePlayer() {
+    const inputElement = document.getElementById('namePlayer');
+    const newName = inputElement.value;
 
-        const photoElement = document.getElementById(`photo-${joueurSelectionneIndex}`);
-        joueurs[joueurSelectionneIndex].name = newName;
-        photoElement.src = `images/${newName.toLowerCase().replace(' ', '-')}.png`;
+    if (selectedPlayerIndex !== null) {
+        const nameElement = document.getElementById(`name-${selectedPlayerIndex}`);
+        nameElement.textContent = newName;
+
+        const photoElement = document.getElementById(`photo-${selectedPlayerIndex}`);
+        photoElement.alt = newName;
+        photoElement.src = `images/${newName.toLowerCase().replace(/ /g, '-')}.png`;
     }
 }
-
-document.addEventListener("DOMContentLoaded", chargerJoueurs);
