@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #003366; /* Fond bleu */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.terrain {
+    width: 80%;
+    height: 600px;
+    background: #222; /* Fond noir du terrain */
+    position: relative;
+    border: 2px solid #444; /* Bordures plus fines et gris foncé */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.terrain::before,
+.terrain::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #555; /* Ligne médiane gris foncé */
+    transform: translateY(-50%);
+}
+
+.terrain::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+.joueur {
+    position: absolute;
+    cursor: pointer;
+}
+
+.joueur img {
+    width: 60px; /* Taille de l'image du joueur */
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #888; /* Bordure grise */
+}
+
+.editeur-joueur {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.editeur-joueur label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #fff; /* Texte blanc pour le label */
+}
+
+.editeur-joueur input {
+    padding: 5px;
+    font-size: 16px;
+    width: 300px;
+}

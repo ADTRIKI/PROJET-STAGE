@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Barcola",
+    "photo": "images/barcola.png",
+    "position": "gk"
+  },
+  {
+    "name": "Dembele",
+    "photo": "images/dembele.png",
+    "position": "cb"
+  },
+  {
+    "name": "Hakimi",
+    "photo": "images/hakimi.png",
+    "position": "lb"
+  },
+  {
+    "name": "Kimpembe",
+    "photo": "images/kimpembe.png",
+    "position": "rb"
+  },
+  {
+    "name": "Kolo Muani",
+    "photo": "images/kolo-muani.png",
+    "position": "lwb"
+  },
+  {
+    "name": "Marquinhos",
+    "photo": "images/Marquinhos.png",
+    "position": "dm"
+  },
+  {
+    "name": "Moscardo",
+    "photo": "images/moscardo.png",
+    "position": "rwb"
+  },
+  {
+    "name": "Nuno",
+    "photo": "images/Nuno.png",
+    "position": "lm"
+  },
+  {
+    "name": "Safonov",
+    "photo": "images/safonov.png",
+    "position": "cm"
+  },
+  {
+    "name": "Soler",
+    "photo": "images/soler.png",
+    "position": "rm"
+  },
+  {
+    "name": "Zaire Emery",
+    "photo": "images/zaire-emery.png",
+    "position": "am"
+  }
+]
