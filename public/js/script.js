@@ -1,61 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('players.json')
-        .then(response => response.json())
-        .then(data => updateField(data))
-        .catch(error => console.error('Error loading JSON data:', error));
-});
+const positions = [
+    'gk', 'cb', 'lb', 'rb', 'lwb', 'dm', 'rwb', 
+    'lm', 'cm', 'rm', 'amr', 'am', 'aml', 
+    'wl', 'cf', 'wr', 'st'
+];
 
-let selectedPlayerIndex = null;
-
-function updateField(players) {
-    players.forEach((player, index) => {
-        const div = document.querySelector(`.${player.position}`);
-        if (div) {
-            const img = createImageElement(player.photo, player.name, index);
-            const span = createSpanElement(player.name, index);
-
-            div.appendChild(img);
-            div.appendChild(span);
-        }
-    });
-}
-
-function createImageElement(src, alt, index) {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = alt;
-    img.width = 50; 
-    img.id = `photo-${index}`;
-    img.addEventListener('click', () => selectPlayer(index, alt));
-    return img;
-}
-
-function createSpanElement(text, index) {
-    const span = document.createElement('span');
-    span.textContent = text;
-    span.id = `name-${index}`;
-    span.classList.add('player-name');
-    span.dataset.index = index;
-    return span;
-}
-
-function selectPlayer(index, name) {
-    selectedPlayerIndex = index;
-    const inputElement = document.getElementById('namePlayer');
-    inputElement.value = name;
-    inputElement.focus();
-}
-
-function editNamePlayer() {
-    const inputElement = document.getElementById('namePlayer');
-    const newName = inputElement.value;
-
-    if (selectedPlayerIndex !== null) {
-        const nameElement = document.getElementById(`name-${selectedPlayerIndex}`);
-        nameElement.textContent = newName;
-
-        const photoElement = document.getElementById(`photo-${selectedPlayerIndex}`);
-        photoElement.alt = newName;
-        photoElement.src = `images/${newName.toLowerCase().replace(/ /g, '-')}.png`;
+function addPlayer() {
+    const playerName = document.getElementById('namePlayer').value.trim();
+    if (playerName === "") {
+        alert("Please enter a player name.");
+        return;
     }
+    
+    const randomPosition = positions[Math.floor(Math.random() * positions.length)];
+    const playerElement = document.createElement('div');
+    playerElement.className = randomPosition;
+    playerElement.textContent = playerName;
+    
+    const fieldPosition = document.querySelector(`.${randomPosition}`);
+    fieldPosition.appendChild(playerElement);
+    
+    const playerList = document.getElementById('player-list');
+    const playerListItem = document.createElement('div');
+    playerListItem.textContent = `${playerName} - ${randomPosition.toUpperCase()}`;
+    playerList.appendChild(playerListItem);
+    
+    document.getElementById('namePlayer').value = "";
 }
