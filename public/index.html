@@ -1,50 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Joueurs</title>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
 <body>
     <center>
         <div class="wrapper">
+            <div class="team-container">
+                <div class="team" id="blueTeam">
+                    <h2>Équipe Bleue</h2>
+                    <ul id="blueTeamList"></ul>
+                </div>
+                <div class="team" id="redTeam">
+                    <h2>Équipe Rouge</h2>
+                    <ul id="redTeamList"></ul>
+                </div>
+            </div>
+            <div class="add-player">
+                <h3>Ajouter un Joueur</h3>
+                <input type="text" id="firstName" placeholder="Prénom" required>
+                <input type="text" id="lastName" placeholder="Nom" required>
+                <select id="position">
+                    <option value="G">Gardien (G)</option>
+                    <option value="DD">Défenseur Droit (DD)</option>
+                    <option value="DM">Défenseur Milieu (DM)</option>
+                    <option value="DG">Défenseur Gauche (DG)</option>
+                    <option value="AT">Attaquant (AT)</option>
+                </select>
+                <select id="team">
+                    <option value="blue">Équipe Bleue</option>
+                    <option value="red">Équipe Rouge</option>
+                </select>
+                <button id="addPlayerButton">Ajouter Joueur</button>
+            </div>
             <div class="campo">
                 <div class="semi1"></div>
                 <div class="semi2"></div>
                 <div class="divisoria"></div>
                 <div class="interior"></div>
-                <div class="penalty"></div>           
-                <div class="gk"></div>
-                <div class="cb"></div>
-                <div class="lb"></div>
-                <div class="rb"></div>
-                <div class="lwb"></div>
-                <div class="dm"></div>
-                <div class="rwb"></div>
-                <div class="lm"></div>
-                <div class="cm"></div>
-                <div class="rm"></div>
-                <div class="amr"></div>
-                <div class="am"></div>
-                <div class="aml"></div>
-                <div class="wl"></div>
-                <div class="cf"></div>
-                <div class="wr"></div>
-                <div class="st"></div>
+                <div class="penalty"></div>
+                <div class="field-half blueField">
+                    <div class="gk blue" id="blueG">G</div>
+                    <div class="dd blue" id="blueDD">DD</div>
+                    <div class="dm blue" id="blueDM">DM</div>
+                    <div class="dg blue" id="blueDG">DG</div>
+                    <div class="at blue" id="blueAT">AT</div>
+                </div>
+                <div class="field-half redField">
+                    <div class="gk red" id="redG">G</div>
+                    <div class="dd red" id="redDD">DD</div>
+                    <div class="dm red" id="redDM">DM</div>
+                    <div class="dg red" id="redDG">DG</div>
+                    <div class="at red" id="redAT">AT</div>
+                </div>
             </div>
         </div>
     </center>
-
-    <div class="editPlayerName">
-        <label for="namePlayer">Player Name:</label>
-        <input type="text" id="namePlayer">
-        <button onclick="addPlayer()">Add Player</button>
-    </div>
-
-    <div id="player-list"></div>
-
-    <script src="js/script.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
