@@ -10,3 +10,9 @@ Bien que je n'aie pas encore tout assimilé, ces outils m'ont permis de progress
 2//
 
 J'ai decider de tout reprendre de 0 pour voir ce qui n'allait pas, et cette fois si sans chatGPT pour vraiment savoir d'ou je commence et ou je vais
+
+
+
+
+
+//changer le path 
